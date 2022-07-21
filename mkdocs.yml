@@ -1,6 +1,0 @@
-site_name: Enjoy Gaming
-site_url: https://testzebra.live/
-nav:
-  - Home: index.md
-  - About: about.md
-theme: readthedocs
