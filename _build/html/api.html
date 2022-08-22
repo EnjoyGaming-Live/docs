@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link rel="icon" href="_static/favicon-32x32.png" type="image/png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wallet Seamless API &mdash; Enjoy Gaming -  Game Provider Integration Documentation  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Enjoy Gaming -  Game Provider Integration Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Seamless API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api-methods">API Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brief-methods-description">Brief methods description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#login-method">Login method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transaction-method">Transaction method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rollback-method">Rollback method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getbalance-method">Getbalance method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logout-method">Logout method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#game-process-example">Game process example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-game-s-url">1. Generating game’s URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#game-server-sends-a-login-request">2. Game server sends a login request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-operator-sends-response-to-the-login-request">3. The Operator sends response to the login request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#game-server-sends-transaction-request">4. Game server sends transaction request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-operator-sends-a-response-to-transaction-request">5. The Operator sends a response to transaction request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#game-server-sends-logout-request">6. Game server sends logout request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-operator-sends-a-response-to-logout-request">7. The Operator sends a response to logout request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ext-1-stream-mode">Ext. 1: Stream mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ext-2-detailed-freebets">Ext. 2: Detailed Freebets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ext-3-detailed-api">Ext. 3: Detailed API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ext-4-profiles">Ext. 4: Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ext-5-security-header">Ext. 5: Security header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ext-6-custom-buttons">Ext. 6: Custom Buttons</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Enjoy Gaming -  Game Provider Integration Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Wallet Seamless API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wallet-seamless-api">
+<span id="seamless-label"></span><h1>Wallet Seamless API<a class="headerlink" href="#wallet-seamless-api" title="Permalink to this heading"></a></h1>
+<section id="api-methods">
+<h2>API Methods<a class="headerlink" href="#api-methods" title="Permalink to this heading"></a></h2>
+<section id="brief-methods-description">
+<h3>Brief methods description<a class="headerlink" href="#brief-methods-description" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>login</strong> method is sent every time a player enters game’s page. A server passes a secret token that was used to start the game. If an Operator accepts it, the game is displayed for the player. Otherwise, the player sees an error message (read below about possible error messages).</p></li>
+<li><p><strong>transaction</strong> method is sent every time a player performs a gaming action. A server passes a bet, that was made by player and his win. If an Operator confirms the transaction, the player sees a result (balance change). Otherwise, the player sees an error message (read below about possible error messages).</p></li>
+<li><p><strong>getbalance</strong> method is sent periodically, when a player has a game opened and doesn’t perform any gaming actions. Its main goal is to get player’s actual balance. This method is sent with frequency set by <code class="docutils literal notranslate"><span class="pre">{BALANCE_EXPIRE}</span></code> which is configured by an integration manager.</p></li>
+<li><p><strong>rollback</strong> method is sent in case <strong>transaction</strong> request returned no response. Its main goal is to synchronize game server with an Operator after connection dropouts.</p></li>
+<li><p><strong>logout</strong>  method is sent once a player exited a game (i.e. closing browser tab, leaving to the lobby, connection errors, critical errors or other reasons).</p></li>
+</ol>
+<p><strong>Request format</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">           </span><span class="c1">// string, one of: &quot;login&quot;, &quot;transaction&quot;, &quot;getbalance&quot;, &quot;rollback&quot;, &quot;logout&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string, [a-z]+</p></td>
+<td><p>Method name, can be one of the following: “login”, “transaction”, “getbalance”, “rollback”, “logout”.</p></td>
+</tr>
+<tr class="row-odd"><td><p>uid</p></td>
+<td><p>string, [0-9a-zA-Z]+, 32 characters</p></td>
+<td><p>Unique request identifier. API methods should be idempotent, i.e. repeated request with same uid should not be processed twice by the Operator. Responses cache must be stored until the <strong>logout</strong> method for this session is received.</p></td>
+</tr>
+<tr class="row-even"><td><p>timestamp</p></td>
+<td><p>string, ISO-8601 datetime”YYYY-MM-DDThh:mm:ssВ±hh:mm”</p></td>
+<td><p>Request generation time. Timestamp is not updated over repeated requests sending.</p></td>
+</tr>
+<tr class="row-odd"><td><p>session</p></td>
+<td><p>string, [0-9a-zA-Z]+, 32 characters</p></td>
+<td><p>Game session identifier generated by the game server.</p></td>
+</tr>
+<tr class="row-even"><td><p>args</p></td>
+<td></td>
+<td><p>Set of arguments that differs for every API method.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Note, that all of your responses should be passed along with <strong>200</strong> HTTP status code regardless of the response’s content.
+If a request wasn’t successfully processed by the Operator, a 503 error must be returned. In this case the game server will try to process this request again and send it until it gets 200 HTTP status code.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>If your server receives a transaction with a <code class="docutils literal notranslate"><span class="pre">uid</span></code> which it has already processed, you <strong>must</strong> return a cached result instead of re-processing this <code class="docutils literal notranslate"><span class="pre">uid</span></code> again.</p>
+<p>Otherwise, you will face a lot of locked transactions, that will block players’ gameplay, therefore requiring your manual actions to investigate and resolve such transactions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be advised, that the uniqueness of all <code class="docutils literal notranslate"><span class="pre">*id</span></code> parameters passed in the Game Provider’s requests to your server is only guaranteed in the <code class="docutils literal notranslate"><span class="pre">{PROJECT_NAME}</span></code> limits.</p>
+</div>
+<p><strong>Response format</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// string, [-_0-9a-zA-Z]+</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, any string</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// string, ISO-4217 currency code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">      </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">     </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, [*A-Z]+</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// string, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>uid</strong></p></td>
+<td><p>string, [0-9a-zA-Z]+, 32 characters</p></td>
+<td><p>The same uid as was passed in the request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>player</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>string, [-_0-9a-zA-Z]+</p></td>
+<td><p>Player’s id in Operator’s data base.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nick</p></td>
+<td><p>string</p></td>
+<td><p>Player’s nickname, can be any string.</p></td>
+</tr>
+<tr class="row-even"><td><p>currency</p></td>
+<td><p>string, ISO-4217 code or “FUN”</p></td>
+<td><p>E.g. USD, EUR, RUB. Full list of all supported currencies must be agreed with an integration manager. For the game in demo mode special currency (“FUN”) must be passed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>balance</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>value</p></td>
+<td><p>biginteger, greater or equals to 0</p></td>
+<td><p>Player’s balance value in cents.</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>biginteger</p></td>
+<td><p>Version of player’s balance must start from <em>0 or any positive number</em> and it should be <strong>increased</strong> every time player’s balance is changed. Note, that <code class="docutils literal notranslate"><span class="pre">version</span></code> should be kept for each <code class="docutils literal notranslate"><span class="pre">player_id</span> <span class="pre">+</span> <span class="pre">currency</span></code> object and it <strong>should not</strong> be reset on a start of the new game session.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>error</strong></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>code</p></td>
+<td><p>string, [*A-Z]+, up to 100 characters</p></td>
+<td><p>There are different error code sets for every API method.</p></td>
+</tr>
+<tr class="row-even"><td><p>message</p></td>
+<td><p>string</p></td>
+<td><p>This parameter is used for passing an information about the problem, which occured during the game session. In case you pass non-empty <code class="docutils literal notranslate"><span class="pre">message</span></code>, then the <code class="docutils literal notranslate"><span class="pre">message</span></code> will be displayed to a player inside a pop-up window, otherwise the standard message will be shown to the player. There are separate standard message sets for every game and localization. Ask your integration manager for more details.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">player</span></code> object must be passed only in response to the <strong>login</strong> request;</p></li>
+<li><p>in case of errors, it is not mandatory to pass <code class="docutils literal notranslate"><span class="pre">player</span></code> and <code class="docutils literal notranslate"><span class="pre">balance</span></code> objects.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Seamless Wallet API implementation on Operator’s side must have ability to receive extra JSON fields yet not present in API to avoid critical situations due to API updates.</p>
+</div>
+</section>
+<section id="login-method">
+<span id="login-seamless-label"></span><h3>Login method<a class="headerlink" href="#login-method" title="Permalink to this heading"></a></h3>
+<p>On game start, the Operator sends player’s authentication token (see Figure 1). Game server creates session ID and passes it along with the token in the <strong>login</strong> request. Then, the Operator receives series of transactions with this session ID until <strong>logout</strong> command for this session is received.</p>
+<p>Only one unique game session can be running in given time period for one player with one currency (game + player ID + currency). I.e.</p>
+<ul class="simple">
+<li><p>A player can play several different games simultaneously;</p></li>
+<li><p>A player can play one game with different currencies (e.g. FUN and USD);</p></li>
+<li><p>A player is not allowed to play a same game with a same currency. If the player starts the same game twice, previous one is closed.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Receiving of new <strong>login</strong> command for a same player, currency and game does not mean that there will be no commands for previous session. See <a class="reference internal" href="#transaction-method">Transaction method</a> for details.</p>
+</div>
+<figure class="align-center" id="id1">
+<img alt="images/betapi/login.png" src="images/betapi/login.png" />
+<figcaption>
+<p><span class="caption-text">Figure 1 - Game’s start scheme</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Request format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;login&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">        </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// string, [-_0-9a-zA-Z]+</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, any string</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">    </span><span class="c1">// string, ISO-4217 currency code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">      </span><span class="c1">// biginteger, should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;settings&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w">         </span><span class="c1">// [optional]</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;profile&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// [optional] string, profile name, which will be applied for this exact game session (see Tip box below)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response containing an error format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, one of &quot;GAME_NOT_ALLOWED&quot;, &quot;INVALID_TOKEN&quot;, &quot;EXPIRED_TOKEN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// message, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Profiles offer you customization options for each exact game session, for more information see <a class="reference internal" href="#profiles-label"><span class="std std-ref">Ext. 4: Profiles</span></a>.</p>
+</div>
+<p>If the <strong>login</strong> was declined, the Operator can pass one of the following error codes:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INVALID_TOKEN</p></td>
+<td><p>Passed token was not generated by the Operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EXPIRED_TOKEN</p></td>
+<td><p>The token is expired.</p></td>
+</tr>
+<tr class="row-even"><td><p>GAME_NOT_ALLOWED</p></td>
+<td><p>The player is not allowed to play this game.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to use at least 24h expiration intervals for tokens. Less expiration time may cause bad user experience on mobile devices.</p>
+</div>
+</section>
+<section id="transaction-method">
+<span id="transaction-method-label"></span><h3>Transaction method<a class="headerlink" href="#transaction-method" title="Permalink to this heading"></a></h3>
+<p>Every transaction contains a bet and/or a win, an array of rounds’ IDs related to the given transaction, and freebet’s ID, if the freebet was used.</p>
+<figure class="align-center" id="id2">
+<img alt="images/betapi/transaction.png" src="images/betapi/transaction.png" />
+<figcaption>
+<p><span class="caption-text">Figure 2 - Performing game action scheme</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>For every started game all transactions are processed sequentially. If the transaction can not be processed for any reason (no connection with the Operator, protocol errors, etc.), several <code class="docutils literal notranslate"><span class="pre">{MAX_COMMAND_RETRY}</span></code> (configured by integration manager) attempts will be made (see figure 3).</p>
+<p>If no response was received:</p>
+<ol class="arabic simple">
+<li><p>a session is being closed;</p></li>
+<li><p>the game is being locked;</p></li>
+<li><p>the transaction is appended to the blocked transactions list (see figure 4).</p></li>
+</ol>
+<p>The <strong>logout</strong> command will not be sent for the session with the blocked transaction until this transaction is unblocked. A player will not be able to play this game until blocked transaction is unblocked, too.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>New <strong>login</strong> request may be sent before the <strong>logout</strong> on previous session of same token, player ID, game and currency. If previous session has uncommitted transaction, it will be sent again with previous session identifier. That’s the case when the Operator receives commands with old session ID after new session was created by <strong>login</strong> request. If this transaction cannot be committed, a player will be blocked.</p>
+<p>Considering written above, please, make sure your system doesn’t try to validate old <em>tokens</em> <strong>OR</strong> at least is able to accept them after their expiration <em>until</em> <strong>logout</strong> command for that <code class="docutils literal notranslate"><span class="pre">session_id</span> <span class="pre">+</span> <span class="pre">token</span></code> is received by your server.
+Otherwise, financial mismatches between Game Provider’s and Operator’s systems may occur. Also, blocked players will be unable to be unblocked automatically at the moment your server receives an ‘old’ transaction.</p>
+</div>
+<figure class="align-center" id="id3">
+<img alt="images/betapi/transaction_503.png" src="images/betapi/transaction_503.png" />
+<figcaption>
+<p><span class="caption-text">Figure 3 - Repeated transaction sending scheme</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<img alt="images/betapi/transaction_lock.png" src="images/betapi/transaction_lock.png" />
+<figcaption>
+<p><span class="caption-text">Figure 4 - Game blocking scheme</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Request format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">               </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">               </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w">              </span><span class="c1">// array[biginteger]</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">     </span><span class="c1">// boolean, indicates, if current game action is a start of game round; see the table below for explanation</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// boolean, indicates, if current game action is a finish of game round; see the table below for explanation</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, player&#39;s ID in Operator&#39;s data base</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">         </span><span class="c1">// string, ISO-4217 code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p">},</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">            </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;freebet_details&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// null or object in case of a freebet transaction</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">                </span><span class="c1">// biginteger</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">// string, one of: &quot;fixed&quot;, &quot;flexible&quot;, &quot;feature_freespins&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">           </span><span class="c1">// string, one of: &quot;tournament&quot;, &quot;jackpot&quot;, &quot;daily_reward&quot;, &quot;lottery&quot;, &quot;operator&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;source_type&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">    </span><span class="c1">// null or string, will be used in future promo tools</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;place&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">          </span><span class="c1">// biginteger, only in case the freebet is a tournament prize, otherwise - null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;campaign&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// string, promotional campaign name, may be empty</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;total_bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">         </span><span class="c1">// biginteger, &gt;0, total_bet set for flexible/feature_freespins freebet or accumulated bet of all fixed freebet&#39;s rounds in cents</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;total_rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">      </span><span class="c1">// integer, &gt;0, only for fixed freebets, otherwise - null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;round_bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">         </span><span class="c1">// biginteger, &gt;0, in cents, only for fixed freebets, otherwise - null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;start_date&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">     </span><span class="c1">// string, ISO-8601 or null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;end_date&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, ISO-8601 or null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">           </span><span class="c1">// string, one of: &quot;active&quot;, &quot;finished&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;played_bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">        </span><span class="c1">// biginteger, &gt;=0, current accumulated amount of played bets in the freebet</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;played_win&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">         </span><span class="c1">// biginteger, &gt;=0, current accumulated amount of winnings in the freebet</span><span class="w"></span>
+<span class="w">       </span><span class="p">},</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">            </span><span class="c1">// biginteger or null, ID of an award; player may be awarded for fulfilling some predefined condition in a game</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;award_details&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w">           </span><span class="c1">// null or object in case of an award transaction</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">                 </span><span class="c1">// biginteger, award ID</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, one of: &quot;money&quot;, &quot;souvenir&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, one of: &quot;tournament&quot;, &quot;jackpot&quot;, &quot;daily_reward&quot;, &quot;lottery&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;source_type&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">     </span><span class="c1">// null or string, will be used in future promo tools</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;place&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">           </span><span class="c1">// biginteger, only in case the award is a tournament prize, otherwise - null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;campaign&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">          </span><span class="c1">// string, promotional campaign name, may be empty</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;amount&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">             </span><span class="c1">// biginteger, &gt;=0</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;start_date&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">      </span><span class="c1">// string, ISO-8601 or null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;end_date&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">        </span><span class="c1">// string, ISO-8601 or null</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;finished&quot;</span><span class="w">     </span><span class="c1">// string, always &quot;finished&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bet=null</span></code> value means a player didn’t bet in current game action (e.g. this situation may happen during freespins series).</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your system <strong>must be</strong> able to accept Game Provider’s transactions with <code class="docutils literal notranslate"><span class="pre">bet=null</span></code> even in case player’s token is expired at your side.
+Transactions containing <code class="docutils literal notranslate"><span class="pre">bet=null</span></code> are progressive wins and they are sent to the Operator <strong>after</strong> the Operator <strong>accepts player’s bet</strong>, which means declining such transaction will deny player of his fair win. Also, such behavior of the Operator’s side will require manual actions to be performed, i.e. unblocking player’s transaction from Game Provider’s backoffice and crediting the player with his win.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Your system <strong>must be</strong> able to accept Game Provider’s award transactions containing <code class="docutils literal notranslate"><span class="pre">bet=0</span></code>, <code class="docutils literal notranslate"><span class="pre">award_id!=null</span></code>.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">win=null</span></code> value means a round is not finished yet, and a win hasn’t been calculated yet.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>, the Operator can reject the bet (e.g. insufficient funds on player’s account), but when a transaction contains only a win, a casino can not refuse to credit it to player’s account.</p></li>
+<li><dl class="simple">
+<dt>Transactions may be processed in <code class="docutils literal notranslate"><span class="pre">one</span> <span class="pre">round</span> <span class="pre">--</span> <span class="pre">one</span> <span class="pre">transaction</span></code> mode (e.g. a spin in slot games). In that case each transaction contains a new <code class="docutils literal notranslate"><span class="pre">round_id</span></code>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">10,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">0,</span>&#160; <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[356]</span></code> <em>(new round)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">10,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">0,</span>&#160; <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[357]</span></code> <em>(new round)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">10,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">15,</span> <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[358]</span></code> <em>(new round)</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Transactions may be processed in <code class="docutils literal notranslate"><span class="pre">one</span> <span class="pre">round</span> <span class="pre">--</span> <span class="pre">several</span> <span class="pre">transactions</span></code> mode (e.g. a spin + respin in slot games).</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">10,</span>&#160;&#160; <span class="pre">win</span> <span class="pre">=</span> <span class="pre">20,</span>&#160;&#160; <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[359]</span></code>    <em>(a new round)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">10,</span>&#160;&#160; <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[359]</span></code>    <em>(an additional win in 359 round)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">10,</span>&#160;&#160; <span class="pre">win</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[360]</span></code>    <em>(a bet in a new round)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">0,</span>&#160;&#160;&#160; <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[360]</span></code>    <em>(a win in 360 round)</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Transactions may be processed in <code class="docutils literal notranslate"><span class="pre">several</span> <span class="pre">rounds</span> <span class="pre">-</span> <span class="pre">one</span> <span class="pre">transaction</span> <span class="pre">mode</span></code> (e.g. freebets (free rounds which are given to a player by the Operator).</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">50,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">45,</span> <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[361,</span> <span class="pre">362,</span> <span class="pre">363,</span> <span class="pre">364,</span> <span class="pre">365],</span> <span class="pre">freebet_id</span> <span class="pre">=</span> <span class="pre">7</span></code>    <em>(the transaction is processed only in case all free rounds were played)</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Transactions with freebet_id may interrupt a sequence of same-round-transactions:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">10,</span>&#160;&#160; <span class="pre">win</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[366]</span></code>    <em>(a bet in a new round)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">50,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">45,</span> <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[367,</span> <span class="pre">368,</span> <span class="pre">369],</span> <span class="pre">freebet_id</span> <span class="pre">=</span> <span class="pre">8</span></code>    <em>(the transaction containing a freebet_id)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">=</span> <span class="pre">null,</span> <span class="pre">win</span> <span class="pre">=</span> <span class="pre">10,</span>&#160;&#160;&#160; <span class="pre">rounds</span> <span class="pre">=</span> <span class="pre">[366]</span></code>    <em>(a win in 366 round)</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Freebet transactions (<code class="docutils literal notranslate"><span class="pre">freebet_id</span> <span class="pre">!=</span> <span class="pre">null</span></code>) must be paid by Operator. <code class="docutils literal notranslate"><span class="pre">bet</span></code> should not be charged from player’s account.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Award transactions (<code class="docutils literal notranslate"><span class="pre">award_id</span> <span class="pre">!=</span> <span class="pre">null</span></code>) containing <code class="docutils literal notranslate"><span class="pre">award_details.type=souvenir</span></code> <strong>must not</strong> be paid by Operator. Neither <code class="docutils literal notranslate"><span class="pre">bet</span></code> should be charged from the player’s account nor <code class="docutils literal notranslate"><span class="pre">win</span></code> should be credited to the player’s account.</p>
+</div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>round_started/round_finished mechanics</strong></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>There are three statements, that are applied to the round_started/round_finished mechanics:</p>
+<ol class="arabic simple">
+<li><p>Every time a player clicks <strong>Spin</strong>, our transactions will contain <code class="docutils literal notranslate"><span class="pre">round_started:</span> <span class="pre">true</span></code>;</p></li>
+<li><p>Transactions that are representing all subsequent game actions between clicking <strong>Spin</strong> will contain <code class="docutils literal notranslate"><span class="pre">round_started:</span> <span class="pre">false</span></code>;</p></li>
+<li><p>Transaction that represents the last game action of the round will contain <code class="docutils literal notranslate"><span class="pre">round_started:</span> <span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">round_finished:</span> <span class="pre">true</span></code> <strong>OR</strong> <code class="docutils literal notranslate"><span class="pre">round_started:</span> <span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">round_finished:</span> <span class="pre">true</span></code> in case the round didn’t contain any subsequent game actions after player had clicked <strong>Spin</strong>.</p></li>
+</ol>
+<p>The following tables demonstrate a behavior of the round_started/round_finished mechanics. A sequence of tables’ <code class="docutils literal notranslate"><span class="pre">round_id</span></code> may be interpreted as one game session.</p>
+<blockquote>
+<div><table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Regular spin round</span><a class="headerlink" href="#id5" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action name</p></th>
+<th class="head"><p>round_started</p></th>
+<th class="head"><p>round_finished</p></th>
+<th class="head"><p>bet</p></th>
+<th class="head"><p>win</p></th>
+<th class="head"><p>round_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>100</p></td>
+<td><p>100</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Regular spin round with subsequent freespins series</span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action name</p></th>
+<th class="head"><p>round_started</p></th>
+<th class="head"><p>round_finished</p></th>
+<th class="head"><p>bet</p></th>
+<th class="head"><p>win</p></th>
+<th class="head"><p>round_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>100</p></td>
+<td><p>100</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>freespin</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>null</p></td>
+<td><p>50</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>freespin_stop</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>null</p></td>
+<td><p>0</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>100</p></td>
+<td><p>0</p></td>
+<td><p>12</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Regular spin round with respin</span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action name</p></th>
+<th class="head"><p>round_started</p></th>
+<th class="head"><p>round_finished</p></th>
+<th class="head"><p>bet</p></th>
+<th class="head"><p>win</p></th>
+<th class="head"><p>round_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>100</p></td>
+<td><p>50</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>respin</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>null</p></td>
+<td><p>150</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>100</p></td>
+<td><p>0</p></td>
+<td><p>14</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Regular spin round with subsequent bonus game</span><a class="headerlink" href="#id8" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action name</p></th>
+<th class="head"><p>round_started</p></th>
+<th class="head"><p>round_finished</p></th>
+<th class="head"><p>bet</p></th>
+<th class="head"><p>win</p></th>
+<th class="head"><p>round_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>100</p></td>
+<td><p>0</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>bonus</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>null</p></td>
+<td><p>400</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>bonus_stop</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>null</p></td>
+<td><p>0</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>100</p></td>
+<td><p>100</p></td>
+<td><p>16</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Freebets series interrupting regular round</span><a class="headerlink" href="#id9" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action name</p></th>
+<th class="head"><p>round_started</p></th>
+<th class="head"><p>round_finished</p></th>
+<th class="head"><p>bet</p></th>
+<th class="head"><p>win</p></th>
+<th class="head"><p>round_id</p></th>
+<th class="head"><p>freebet_id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>100</p></td>
+<td><p>300</p></td>
+<td><p>17</p></td>
+<td><p>null</p></td>
+</tr>
+<tr class="row-odd"><td><p>freespin</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>null</p></td>
+<td><p>400</p></td>
+<td><p>17</p></td>
+<td><p>null</p></td>
+</tr>
+<tr class="row-even"><td><p>freebet rounds</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>200</p></td>
+<td><p>900</p></td>
+<td><p>18, 19, 20</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>freespin</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>null</p></td>
+<td><p>100</p></td>
+<td><p>17</p></td>
+<td><p>null</p></td>
+</tr>
+<tr class="row-even"><td><p>freespin_stop</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>null</p></td>
+<td><p>0</p></td>
+<td><p>17</p></td>
+<td><p>null</p></td>
+</tr>
+<tr class="row-odd"><td><p>spin</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>100</p></td>
+<td><p>0</p></td>
+<td><p>21</p></td>
+<td><p>null</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Response format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">      </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">     </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response containing error format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">      </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, one of &quot;TIME_EXCEED&quot;, &quot;LOSS_EXCEED&quot;, &quot;BET_EXCEED&quot;, &quot;FUNDS_EXCEED&quot;, &quot;OTHER_EXCEED&quot;, &quot;FATAL_ERROR&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// message, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Buttons at the error pop-up can be configured. Please refer to <a class="reference internal" href="#custom-buttons-label"><span class="std std-ref">Ext. 6: Custom Buttons</span></a> for details.</p>
+</div>
+<span id="exceed-errors-label"></span><table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Transaction method error codes</span><a class="headerlink" href="#id10" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Error code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TIME_EXCEED</p></td>
+<td><p>Time limit for a given game is exceeded. This error code may be passed only in case <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p>For example, if a player would have ongoing freespins series with <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">==</span> <span class="pre">null</span></code> transaction requests, then you <strong>CAN NOT</strong> pass this error code.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>LOSS_EXCEED</p></td>
+<td><p>Loss limit exceeded. This error code may be passed only in case <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p>For example, if a player would have ongoing freespins series with <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">==</span> <span class="pre">null</span></code> transaction requests, then you <strong>CAN NOT</strong> pass this error code.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>BET_EXCEED</p></td>
+<td><p>Bet limit exceeded. This error code may be passed only in case <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p>For example, if a player would have ongoing freespins series with <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">==</span> <span class="pre">null</span></code> transaction requests, then you <strong>CAN NOT</strong> pass this error code.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FUNDS_EXCEED</p></td>
+<td><p>Insufficient funds. This error code may be passed only in case <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p>For example, if a player would have ongoing freespins series with <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">==</span> <span class="pre">null</span></code> transaction requests, then you <strong>CAN NOT</strong> pass this error code.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>OTHER_EXCEED</p></td>
+<td><p>Another reason. This error code may be passed only in case <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p>For example, if a player would have ongoing freespins series with <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">==</span> <span class="pre">null</span></code> transaction requests, then you <strong>CAN NOT</strong> pass this error code.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SESSION_CLOSED</p></td>
+<td><p>This error code may be used by the Operator in case you need to kick a player from the game for any reason you have (e.g. expired token, maintenance period, etc). Receiving this error code will cause session close from Game Provider’s side. Game Provider’s game server won’t accept player’s bet and in a while <strong>logout</strong> request will be sent to the Operator with SESSION_CLOSED disconnect reason. This error code may be passed only in case transaction’s <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p>For example, if a player would have ongoing freespins series with <code class="docutils literal notranslate"><span class="pre">bet</span> <span class="pre">==</span> <span class="pre">null</span></code> transaction requests, then you <strong>CAN NOT</strong> pass this error code.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>FATAL_ERROR</p></td>
+<td><p>Receiving this error code means that critical error occurred. An access to a game for that player will be blocked. No repeated requests will be sent. For such kind of transactions manual unblock is required (see <span class="xref std std-ref">locked-transactions-label</span>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rollback-method">
+<h3>Rollback method<a class="headerlink" href="#rollback-method" title="Permalink to this heading"></a></h3>
+<p>If there is an unfinished transaction while a player starts a game, game server will try to roll back this transaction. To avoid negative balance, <strong>transaction</strong> is sent for win transactions ( <code class="docutils literal notranslate"><span class="pre">win</span> <span class="pre">!=</span> <span class="pre">null</span></code> ) instead of <strong>rollback</strong> (see figure 5). The player will not be able to start the game until that transaction is either successfully processed or canceled.</p>
+<figure class="align-center" id="id11">
+<img alt="images/betapi/rollback.png" src="images/betapi/rollback.png" />
+<figcaption>
+<p><span class="caption-text">Figure 5 - Transaction cancellation scheme</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If any transaction with <code class="docutils literal notranslate"><span class="pre">transaction_uid</span></code> identifier was processed by the Operator, it must be rolled back. In other case, actual player’s balance must be returned.</p>
+</div>
+<p><strong>Request format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rollback&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;transaction_uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// string</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">              </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">              </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w">             </span><span class="c1">// array[biginteger]</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">         </span><span class="c1">// biginteger or null, ID of an award; player may be awarded for fulfilling some predefined condition in a game</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, player&#39;s ID in Operator&#39;s data base</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">         </span><span class="c1">// string, ISO-4217 code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">      </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response containing an error format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, one of: &quot;FATAL_ERROR&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// message, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FATAL_ERROR</p></td>
+<td><p>Receiving this error code means that critical error occurred. An access to a game for that player will be blocked. No repeated requests will be sent. For such kind of rollbacks manual unblock is required (see <span class="xref std std-ref">locked-transactions-label</span>).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="getbalance-method">
+<h3>Getbalance method<a class="headerlink" href="#getbalance-method" title="Permalink to this heading"></a></h3>
+<p><strong>getbalance</strong> method will be sent for users with opened game client and who’s balance wasn’t updated in specific amount of time ( <code class="docutils literal notranslate"><span class="pre">{BALANCE_EXPIRE}</span></code> seconds ), which is configured by integration manager.</p>
+<p><strong>Request format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;getbalance&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                  </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, player&#39;s ID in Operator&#39;s data base</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">       </span><span class="c1">// string, ISO-4217 code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">      </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response containing an error format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, one of: &quot;FATAL_ERROR&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// message, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FATAL_ERROR</p></td>
+<td><p>Receiving this error code means that critical error occured.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logout-method">
+<span id="logout-method-label"></span><h3>Logout method<a class="headerlink" href="#logout-method" title="Permalink to this heading"></a></h3>
+<p><strong>logout</strong> is a last request sent for every game session. When it’s sent, it means that a player is disconnected, and all transactions and/or rollbacks have been successfully completed.</p>
+<p><strong>Request format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;logout&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                  </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;reason&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">           </span><span class="c1">// string, one of logout reasons</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, player&#39;s ID in Operator&#39;s data base</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">       </span><span class="c1">// string, ISO-4217 code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reason</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PLAYER_DISCONNECTED</p></td>
+<td><p>A player disconnected.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GAME_REOPENED</p></td>
+<td><p>A game with a same currency is opened in a new windowtab.</p></td>
+</tr>
+<tr class="row-even"><td><p>CURRENCY_NOT_SUPPORTED</p></td>
+<td><p>This currency is not supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GAME_SETTINGS_CHANGED</p></td>
+<td><p>Game settings have changed, reload is required.</p></td>
+</tr>
+<tr class="row-even"><td><p>SERVER_ERROR</p></td>
+<td><p>Internal server error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PROTOCOL_ERROR</p></td>
+<td><p>Wallet Seamless API protocol error – the Operator sends an invalid response.</p></td>
+</tr>
+<tr class="row-even"><td><p>PLAYER_LOCKOUT</p></td>
+<td><p>A player is blocked.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SESSION_CLOSED</p></td>
+<td><p>A player was disconnected after receiving SESSION_CLOSED error code from the Operator.</p></td>
+</tr>
+<tr class="row-even"><td><p>INVALID_SETTINGS</p></td>
+<td><p>The Operator passed wrong profile name in response to <strong>login</strong> request.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response format:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Response format with error:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, one of: &quot;FATAL_ERROR&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">     </span><span class="c1">// message, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FATAL_ERROR</p></td>
+<td><p>When the Operator sends this error code, game server will mark this session as ‘LOGOUT_FAILED’. Repeated requests will not be sent.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="game-process-example">
+<h2>Game process example<a class="headerlink" href="#game-process-example" title="Permalink to this heading"></a></h2>
+<p><strong>A partner provided the following information before start of integration process:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">URL</span> <span class="pre">for</span> <span class="pre">Seamless</span> <span class="pre">Wallet</span> <span class="pre">API</span></code> = “<a class="reference external" href="https://api.casino.com/easter_egg_for_attentive_reader/">https://api.casino.com/easter_egg_for_attentive_reader/</a>”</p></li>
+</ul>
+<p><strong>Integration manager provided the following information:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{GAME_SERVER_URL}</span></code> = “//demoserver.com”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{PROJECT_NAME}</span></code> = “projectname”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{API_TOKEN}</span></code>   = “dvdkfi4343f4fldsavmr93”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{WL}</span></code>          = “wl1”</p></li>
+</ul>
+<p>This document describes how message exchange between game server and the Operator will look like after completing integration process.</p>
+<section id="generating-game-s-url">
+<h3>1. Generating game’s URL<a class="headerlink" href="#generating-game-s-url" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>A player opens casino’s page and logs in.</p></li>
+<li><p>The Operator has an information about this player, his currency and balance.</p></li>
+<li><p>The player goes for Wukong game’s page.</p></li>
+<li><p>The Operator generates game’s starting URL: <code class="docutils literal notranslate"><span class="pre">//demoserver.com/projectname/static/game.html?wl=wl1&amp;token=testtoken&amp;game=wukong&amp;lang=en&amp;sound=1</span></code>. Game’s URL contains parameters values provided by integration manager; the Operator generates a token, which is “testtoken” for this example.</p></li>
+<li><p>The Operator integrates the game via one of available methods (iframe, redirect, custom domain).</p></li>
+<li><p>The game starts.</p></li>
+</ul>
+</section>
+<section id="game-server-sends-a-login-request">
+<h3>2. Game server sends a login request<a class="headerlink" href="#game-server-sends-a-login-request" title="Permalink to this heading"></a></h3>
+<p>A following POST request is sent to <code class="docutils literal notranslate"><span class="pre">https://api.casino.com/easter_egg_for_attentive_reader/</span></code> URL:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;login&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4db89a96e0c911e58ac80242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2016-03-02T22:51:30+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4db895f0e0c911e58ac80242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;testtoken&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Game server passes “token” value which was used for game’s start.</p>
+</section>
+<section id="the-operator-sends-response-to-the-login-request">
+<h3>3. The Operator sends response to the login request<a class="headerlink" href="#the-operator-sends-response-to-the-login-request" title="Permalink to this heading"></a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4db89a96e0c911e58ac80242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1755</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, Operator’s response contains the same uid which was passed in the request. The Operator figures out what exact player is going to play Wukong game by token. This player has 1755 cents on his account (17 dollars and 55 cents).</p>
+<ul class="simple">
+<li><p>After successful logging in, the game is completely started.</p></li>
+<li><p>The player chooses his bet (e.g. 10 cents on each of 20 lines, i.e. 200 cents in total).</p></li>
+<li><p>The player presses spin button.</p></li>
+<li><p>Game server computes game result.</p></li>
+<li><p>Let’s assume this was a lost round, so this player has won nothing.</p></li>
+</ul>
+</section>
+<section id="game-server-sends-transaction-request">
+<h3>4. Game server sends transaction request<a class="headerlink" href="#game-server-sends-transaction-request" title="Permalink to this heading"></a></h3>
+<p>POST request is sent to <code class="docutils literal notranslate"><span class="pre">https://api.casino.com/easter_egg_for_attentive_reader/</span></code> URL:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9542f972e16b11e5b52c0242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2016-03-02T22:51:45+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4db895f0e0c911e58ac80242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">3925</span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;testtoken&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1">// boolean, indicates, if current game action is a start of game round</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w">   </span><span class="c1">// boolean, indicates, if current game action is a finish of game round</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, game server passes <code class="docutils literal notranslate"><span class="pre">session</span></code> value which was used in login process. <code class="docutils literal notranslate"><span class="pre">rounds=[3925]</span></code> value means both bet and win belong to round 3925. <code class="docutils literal notranslate"><span class="pre">freebet_id=null</span></code> value means it is a regular transaction, and a freebet (free rounds which are given to a player by Operator) was not used.</p>
+</section>
+<section id="the-operator-sends-a-response-to-transaction-request">
+<h3>5. The Operator sends a response to transaction request<a class="headerlink" href="#the-operator-sends-a-response-to-transaction-request" title="Permalink to this heading"></a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9542f972e16b11e5b52c0242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1555</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">13</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, the Operator sends the response with the same uid, which was passed in the request. The Operator figures out what exact player performs the transaction. The Operator charges 200 cents from player’s account and increases balance version.</p>
+<ul class="simple">
+<li><p>The player became upset cause of his bad luck and decides to try another game :)</p></li>
+<li><p>The player returns to the lobby.</p></li>
+</ul>
+</section>
+<section id="game-server-sends-logout-request">
+<h3>6. Game server sends logout request<a class="headerlink" href="#game-server-sends-logout-request" title="Permalink to this heading"></a></h3>
+<p>POST request is sent to <code class="docutils literal notranslate"><span class="pre">https://api.casino.com/easter_egg_for_attentive_reader/</span></code> URL:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;logout&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2b5f1c6ee16d11e5b52c0242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2016-03-02T22:52:23+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;4db895f0e0c911e58ac80242ac110009&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;reason&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PLAYER_DISCONNECTED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;testtoken&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, game server passes session value which was used during login process.</p>
+</section>
+<section id="the-operator-sends-a-response-to-logout-request">
+<h3>7. The Operator sends a response to logout request<a class="headerlink" href="#the-operator-sends-a-response-to-logout-request" title="Permalink to this heading"></a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2b5f1c6ee16d11e5b52c0242ac110009&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As you can see, Operator’s response contains the same uid that was passed in the request. The Operator figures out what exact player has exited the game.</p>
+</section>
+</section>
+<section id="ext-1-stream-mode">
+<h2>Ext. 1: Stream mode<a class="headerlink" href="#ext-1-stream-mode" title="Permalink to this heading"></a></h2>
+<p>There is a possibility to stream a game of exact player for a spectator in Game Provider’s games. Two options are available: online streaming of the game and streaming of exact game rounds.</p>
+<p>Only two of described above methods are used for this mode: <strong>login</strong> and <strong>logout</strong>. All changes in these methods are described below.</p>
+<p><strong>login method</strong></p>
+<p><em>Response format:</em></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                 </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;streamer&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, [-_0-9a-zA-Z]+ , player&#39;s ID, whose game will be streamed</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, any string</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">         </span><span class="c1">// string, ISO-4217 currency code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;stream&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_from&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">  </span><span class="c1">// biginteger or null, round ID which from a stream will be started</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_to&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">    </span><span class="c1">// biginteger or null, round ID where a stream will be ended since &quot;round_from&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w">       </span><span class="c1">// biginteger or null, amount of rounds to be streamed beginning from &quot;round_from&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>round_from</p></td>
+<td><p>Round’s ID which from a stream will be started. For online streaming ‘null’ value must be passed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>round_to</p></td>
+<td><p>Round’s ID where stream will be ended beginning from <strong>round_from</strong>. For online streaming ‘null’ value must be passed.</p></td>
+</tr>
+<tr class="row-even"><td><p>rounds</p></td>
+<td><p>Amount of rounds to be streamed beginning from <strong>round_from</strong>. For online streaming ‘null’ value must be passed.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<p><em>Example 1:</em></p>
+<p>For online streaming of a game of a player with ID 1 and USD currency the following must be passed:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ljkgdsljgal32124&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;streamer&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;stream&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_from&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_to&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, a spectator will watch all played rounds by streamer except freebets. While the streamer plays in freebet mode, the spectator will be in a standby mode.</p>
+<p><em>Example 2:</em></p>
+<p>Let’s say there is a player with ID 1, who plays in USD currency and he finished game rounds with ID 10, 20, 30, 40, 50, 60.</p>
+<p>To stream all these rounds the following must be passed:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ljkgdsljgal32124&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;streamer&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;stream&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_from&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_to&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, a spectator will watch every of these six rounds.</p>
+<p><em>Example 3:</em></p>
+<p>To stream three rounds, starting at a round with ID 30, the following must be passed:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ljkgdsljgal32124&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;streamer&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;stream&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_from&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;round_to&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, a spectator will watch game rounds with ID 30, 40, 50.</p>
+<p><strong>logout method</strong></p>
+<p>On the end of stream session game server will send <strong>logout</strong> command. Response format is the same as in usual <strong>logout</strong> command.</p>
+<p><em>Request format:</em></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;logout&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                  </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;reason&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">           </span><span class="c1">// string, &quot;STREAM_FINISHED&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;streamer&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, player&#39;s ID in Operator&#39;s data base</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">       </span><span class="c1">// string, ISO-4217 code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reason</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>STREAM_FINISHED</p></td>
+<td><p>A stream was finished.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ext-2-detailed-freebets">
+<span id="detailed-freebets-label"></span><h2>Ext. 2: Detailed Freebets<a class="headerlink" href="#ext-2-detailed-freebets" title="Permalink to this heading"></a></h2>
+<p>On Operator’s request integration manager can turn on detailed freebets mode for Operator’s project. In this mode freebet transactions will be passed to the Operator one by one. Each game round will have its own transaction or several of them in case of progressive win (e.g. freespins).
+Each of such transactions will contain <code class="docutils literal notranslate"><span class="pre">freebet_id</span> <span class="pre">!=</span> <span class="pre">null</span></code>.</p>
+<p><strong>Example</strong></p>
+<p>Let’s assume a player has assigned freebet with <code class="docutils literal notranslate"><span class="pre">freebet_id=1</span></code> (<code class="docutils literal notranslate"><span class="pre">game_name=wukong,</span> <span class="pre">rounds=2,</span> <span class="pre">round_bet=100</span></code>, see <span class="xref std std-ref">freebet-creating-label-v4</span> for details).</p>
+<p>By default, Operator will receive only one transaction with accumulated bets and wins, related to this freebet:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;3fc06b9acf0e4a7c8d66fb51870e77c1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2018-01-03T11:26:30+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fdcbb84323f74fd88df07760babaa091&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">                            </span><span class="c1">// freebet transaction</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// accumulated bet for 2 rounds</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// accumulated win for 2 rounds</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">101</span><span class="p">],</span><span class="w">                       </span><span class="c1">// IDs of accumulated rounds</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jfdgxgjfgj346&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;16&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Using Detailed Freebets extension, Operator will receive a series of transactions, related to this freebet:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;3fc06b9acf0e4a7c8d66fb51870e77c1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2018-01-03T11:26:30+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fdcbb84323f74fd88df07760babaa091&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">                            </span><span class="c1">// freebet transaction</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// round_bet in first round</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                                   </span><span class="c1">// win in first round</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">100</span><span class="p">],</span><span class="w">                            </span><span class="c1">// first round id</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jfdgxgjfgj346&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;16&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;3fc06b9acf0e4a7c8d66fb51870e77c2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2018-01-03T11:26:35+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fdcbb84323f74fd88df07760babaa091&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">                            </span><span class="c1">// freebet transaction</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// round_bet in second round</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// win in second round</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">101</span><span class="p">],</span><span class="w">                            </span><span class="c1">// second round id</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jfdgxgjfgj346&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;16&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;3fc06b9acf0e4a7c8d66fb51870e77c3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2018-01-03T11:26:40+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fdcbb84323f74fd88df07760babaa091&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">                            </span><span class="c1">// freebet transaction</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w">                                 </span><span class="c1">// progressive win in second round</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">101</span><span class="p">],</span><span class="w">                            </span><span class="c1">// second round id</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wukong&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jfdgxgjfgj346&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;16&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ext-3-detailed-api">
+<span id="betapi-detailed-api-label"></span><h2>Ext. 3: Detailed API<a class="headerlink" href="#ext-3-detailed-api" title="Permalink to this heading"></a></h2>
+<p>To get round’s details from game server, the Operator should send a response to <strong>login</strong> request like this:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// string, [-_0-9a-zA-Z]+</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;nick&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// string, any string</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">    </span><span class="c1">// string, ISO-4217 currency code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">      </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;send_details&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// boolean, indicates if a detailed information about game rounds should be sent to the Operator</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Operator should specify <code class="docutils literal notranslate"><span class="pre">send_details</span></code> field only in case he wants to receive a detailed information about game rounds. This field is set to <code class="docutils literal notranslate"><span class="pre">false</span></code> by default.</p>
+</div>
+<p>If the Operator has sent a response to game server as in example above, then he will receive a detailed information about game rounds in each transaction. This information will be represented in <code class="docutils literal notranslate"><span class="pre">details</span></code> field:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;timestamp&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, ISO-8601 datetime (&quot;YYYY-MM-DDThh:mm:ssВ±hh:mm&quot;)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;session&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                </span><span class="c1">// string, [0-9a-zA-Z]{32}</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;bet&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">              </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;win&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">              </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;rounds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w">             </span><span class="c1">// array[biginteger]</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;freebet_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">       </span><span class="c1">// biginteger or null</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, generated by Operator</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;game&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">// string, game&#39;s ID</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;round_started&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1">// boolean, indicates, if current game action is a start of game round</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;round_finished&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w">   </span><span class="c1">// boolean, indicates, if current game action is a finish of game round</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;award_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">         </span><span class="c1">// biginteger or null, ID of an award; player may be awarded for fulfilling some predefined condition in a game</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;player&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// string, player&#39;s ID in Operator&#39;s data base</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">         </span><span class="c1">// string, ISO-4217 code or &quot;FUN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;details&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;round_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w">         </span><span class="c1">// biginteger</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you want to receive detailed information for freebet transactions (freebet_id != null), you have to implement <a class="reference internal" href="#detailed-freebets-label"><span class="std std-ref">Ext. 2: Detailed Freebets</span></a>. Otherwise, <code class="docutils literal notranslate"><span class="pre">details</span></code> field wonвЂ™t be sent for freebet transactions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">data</span></code> field will contain data set specific for every Game Provider’s game.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Retrieving round’s details is also possible by using <span class="xref std std-ref">Back-office API</span>.</p>
+</div>
+</section>
+<section id="ext-4-profiles">
+<span id="profiles-label"></span><h2>Ext. 4: Profiles<a class="headerlink" href="#ext-4-profiles" title="Permalink to this heading"></a></h2>
+<p>You can treat profile as a template, that contains the following <strong>configurable</strong> parameters:</p>
+<ol class="arabic simple">
+<li><p><strong>Multipliers</strong>. It’s an array of multipliers, that stands for a sequence of <code class="docutils literal notranslate"><span class="pre">bet_per_line</span></code>’s represented in cents. This parameter affects bets sequence present in the game client (see <span class="xref std std-term">bet_factor</span>).</p></li>
+<li><p><strong>Default multiplier</strong>. It’s an exact multiplier from the array described in <em>point 1</em> which is used to set a <em>default bet</em> for player’s initial game launch.</p></li>
+<li><p><strong>Money style</strong>. This parameter manages player’s balance representation in the game client. There are two available representation modes, <em>money</em> and <em>number</em>. See pictures below.</p></li>
+</ol>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>Appearance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Money</p></td>
+<td><figure class="align-default">
+<img alt="images/betapi/money_style_money_like.png" src="images/betapi/money_style_money_like.png" />
+</figure>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Number</p></td>
+<td><figure class="align-default">
+<img alt="images/betapi/money_style_number_like.png" src="images/betapi/money_style_number_like.png" />
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p><strong>Currency style</strong>. This parameter manages currency appearance in the game client. There are three available settings, <em>code</em>, <em>symbol</em> and <em>hidden</em>. See pictures below.</p></li>
+</ol>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>Appearance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Code</p></td>
+<td><figure class="align-default">
+<img alt="images/betapi/currency_style_code.png" src="images/betapi/currency_style_code.png" />
+</figure>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Symbol</p></td>
+<td><figure class="align-default">
+<img alt="images/betapi/currency_style_symbol.png" src="images/betapi/currency_style_symbol.png" />
+</figure>
+</td>
+</tr>
+<tr class="row-even"><td><p>Hidden</p></td>
+<td><figure class="align-default">
+<img alt="images/betapi/currency_style_hidden.png" src="images/betapi/currency_style_hidden.png" />
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="5">
+<li><p><strong>Currencies</strong>. List of currencies which all of above parameters will be applied to.</p></li>
+<li><p><strong>Games</strong>. List of game which all of above parameters will be applied to.</p></li>
+</ol>
+<p>To create a profile and configure any of above parameters ask your integration manager.</p>
+</section>
+<section id="ext-5-security-header">
+<h2>Ext. 5: Security header<a class="headerlink" href="#ext-5-security-header" title="Permalink to this heading"></a></h2>
+<p>Not feeling secure enough? We got your back.</p>
+<p>Upon your request, HMAC Authentication can be enabled for the API. This solution
+implies usage of <code class="docutils literal notranslate"><span class="pre">Security-Hash</span></code> header for all HTTP requests and responses concerning this API.
+Header’s value is directly affected by <code class="docutils literal notranslate"><span class="pre">WALLET_SIGN_KEY</span></code> and HTTP request’s/response’s body.</p>
+<p>So, you signed up for this pretty security header. What’s next?</p>
+<ol class="arabic simple">
+<li><p>Game Provider’s integration manager should provide you with <code class="docutils literal notranslate"><span class="pre">WALLET_SIGN_KEY</span></code>. You know, ask those people from the integration chat.</p></li>
+<li><p>All Game Provider’s HTTP API requests will contain the <code class="docutils literal notranslate"><span class="pre">Security-Hash</span></code> header.</p></li>
+<li><p>All of your HTTP API responses are expected to contain the <code class="docutils literal notranslate"><span class="pre">Security-Hash</span></code> header as well. Fair is fair.</p></li>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">Security-Hash</span></code> coming along with your API response would contain an invalid value, you can expect the following behaviour from Game Provider’s game server:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>if the header’s invalid value was received for <code class="docutils literal notranslate"><span class="pre">login</span></code> command, then this request will be treated as unsuccessful and a player will not be able to log into a game. The player will be also shown <em>Internal error</em> pop-up;</p></li>
+<li><p>if the header’s invalid value was received for <code class="docutils literal notranslate"><span class="pre">transaction</span></code> or <code class="docutils literal notranslate"><span class="pre">rollback</span></code> commands, then such request will be blocked upon reaching <code class="docutils literal notranslate"><span class="pre">MAX_COMMAND_RETRY</span></code> tries;</p></li>
+<li><p>if the header’s invalid value was received for <code class="docutils literal notranslate"><span class="pre">getbalance</span></code> or <code class="docutils literal notranslate"><span class="pre">logout</span></code> commands, then such request will be treated as unsuccessful, but this will not block a game for a player.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>Please note that Game Provider’s game server will be checking header’s validity <strong>only</strong> in case your HTTP response comes along with <strong>200</strong> HTTP code.</p></li>
+</ol>
+<p>Do you have a code example for generating HMAC code? We do.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>Example of HMAC code generation in Python for login command</strong></p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">hmac</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># Wallet sign key provided by Game Provider&#39;s integration manager:</span>
+<span class="linenos"> 7</span><span class="n">wallet_sign_key</span> <span class="o">=</span> <span class="s1">&#39;example_wallet_sign_key&#39;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># Your API callback URL:</span>
+<span class="linenos">10</span><span class="n">wallet_url</span> <span class="o">=</span> <span class="s1">&#39;https://operator-api.com/wallet/easter_egg&#39;</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1"># Game Provider&#39;s game server prepares a request to your server:</span>
+<span class="linenos">13</span><span class="n">request_body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+<span class="linenos">14</span>  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>  <span class="s2">&quot;uid&quot;</span><span class="p">:</span> <span class="s2">&quot;4db89a96e0c911e58ac80242ac110009&quot;</span><span class="p">,</span>
+<span class="linenos">16</span>  <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-03-02T22:51:30+00:00&quot;</span><span class="p">,</span>
+<span class="linenos">17</span>  <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;4db895f0e0c911e58ac80242ac110009&quot;</span><span class="p">,</span>
+<span class="linenos">18</span>  <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="linenos">19</span>      <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;testtoken&quot;</span><span class="p">,</span>
+<span class="linenos">20</span>      <span class="s2">&quot;game&quot;</span><span class="p">:</span> <span class="s2">&quot;wukong&quot;</span>
+<span class="linenos">21</span>  <span class="p">}</span>
+<span class="linenos">22</span><span class="p">})</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="c1"># For the given request_body request_hash value would be</span>
+<span class="linenos">25</span><span class="c1"># &#39;6c8ba2b72208e6bbba80035b320a0bf45a96715a8b199a374f0bcd78955f3832&#39;</span>
+<span class="linenos">26</span><span class="n">request_hash</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="linenos">27</span>  <span class="n">key</span><span class="o">=</span><span class="n">wallet_sign_key</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">),</span>
+<span class="linenos">28</span>  <span class="n">msg</span><span class="o">=</span><span class="n">request_body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">),</span>
+<span class="linenos">29</span>  <span class="n">digestmod</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="c1"># As you can see, request sent to your server contains &#39;Security-Hash&#39; header.</span>
+<span class="linenos">32</span><span class="c1"># Upon receiving the request, you may check if `Security-Hash` header is valid.</span>
+<span class="linenos">33</span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">wallet_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">request_body</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+<span class="linenos">34</span>  <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="linenos">35</span>  <span class="s2">&quot;Security-Hash&quot;</span><span class="p">:</span> <span class="n">request_hash</span>
+<span class="linenos">36</span><span class="p">})</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="c1"># Let&#39;s assume that your server returned 200 OK response</span>
+<span class="linenos">39</span><span class="n">response_body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">as_text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">40</span><span class="n">response_hash</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Security-Hash&#39;</span><span class="p">)</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="c1"># Now Game Provider&#39;s game server checks if response_hash is valid for received response_body</span>
+<span class="linenos">43</span><span class="n">required_hash</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="linenos">44</span>  <span class="n">key</span><span class="o">=</span><span class="n">wallet_sign_key</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">),</span>
+<span class="linenos">45</span>  <span class="n">msg</span><span class="o">=</span><span class="n">response_body</span><span class="p">,</span>
+<span class="linenos">46</span>  <span class="n">digestmod</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="k">if</span> <span class="n">response_hash</span> <span class="o">!=</span> <span class="n">required_hash</span><span class="p">:</span>
+<span class="linenos">49</span>  <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Security-Hash is invalid&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="ext-6-custom-buttons">
+<span id="custom-buttons-label"></span><h2>Ext. 6: Custom Buttons<a class="headerlink" href="#ext-6-custom-buttons" title="Permalink to this heading"></a></h2>
+<p>In case you want to have more control over the player actions during some in-game errors,
+it is possible to change default buttons and an error message that are shown in our games’ UI. It can be
+achieved by adding a few extra parameters to <code class="docutils literal notranslate"><span class="pre">error</span></code> object of <a class="reference internal" href="#transaction-method-label"><span class="std std-ref">Transaction method</span></a> response.</p>
+<p>There are 4 types of buttons available:</p>
+<ol class="arabic simple">
+<li><p><strong>Continue Session</strong> button (<code class="docutils literal notranslate"><span class="pre">continue_session</span></code>): just closes an error pop-up and does nothing more.</p></li>
+<li><p><strong>Close Session</strong> button (<code class="docutils literal notranslate"><span class="pre">close_session</span></code>): not only closes an error pop-up, but also finishes player’s game session.</p></li>
+<li><p><strong>Show History</strong> button (<code class="docutils literal notranslate"><span class="pre">show_history</span></code>): opens a History page that was sent as <code class="docutils literal notranslate"><span class="pre">history_url</span></code> parameter in <span class="xref std std-ref">gamerunner-label</span> arguments.</p></li>
+<li><p><strong>Close Session and Exit</strong> button (<code class="docutils literal notranslate"><span class="pre">close_session_and_exit</span></code>): closes an error pop-up, finishes player’s game session and opens an Exit page that was sent as <code class="docutils literal notranslate"><span class="pre">exit_url</span></code> parameter in <span class="xref std std-ref">gamerunner-label</span> arguments.</p></li>
+</ol>
+<p><strong>Response containing an error with custom buttons:</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;uid&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                            </span><span class="c1">// string, the same as request uid</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;balance&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;value&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                       </span><span class="c1">// biginteger, &gt;= 0</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">                      </span><span class="c1">// should be increased after balance.value is changed; it should not be reset on a start of the new game session</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;error&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                       </span><span class="c1">// string, one of &quot;TIME_EXCEED&quot;, &quot;LOSS_EXCEED&quot;, &quot;BET_EXCEED&quot;, &quot;FUNDS_EXCEED&quot;, &quot;OTHER_EXCEED&quot;, &quot;FATAL_ERROR&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// message, any string, if not empty, message content will be displayed to a player inside of a pop-up window, otherwise standard message will be shown</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;buttons&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;text&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;button text&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// [MANDATORY] string, text that will be shown on the button, must be brief</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;action&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;continue_session&quot;</span><span class="w">   </span><span class="c1">// [MANDATORY] string, one of &quot;continue_session&quot;, &quot;close_session&quot;, &quot;show_history&quot;, &quot;close_session_and_exit&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Maximum 3 buttons can be sent within one transaction response.</p>
+</div>
+<p>There are a few rules you should consider while using custom buttons:</p>
+<ol class="arabic simple">
+<li><p>If no <code class="docutils literal notranslate"><span class="pre">message</span></code> has been sent in the transaction’s response, then our default message will be shown in accordance to error code.</p></li>
+<li><p>If <strong>Continue Session</strong> button has been sent together with either FATAL_ERROR or SESSION_CLOSED error codes, then the session still will be closed.</p></li>
+<li><p><strong>Show History</strong> button will do nothing if the Operator has turned off History’s availability for this game session by sending empty <code class="docutils literal notranslate"><span class="pre">history_url</span></code> parameter in <span class="xref std std-ref">gamerunner-label</span> arguments.</p></li>
+<li><p><strong>Close Session and Exit</strong> button will work the same way as <strong>Close Session</strong> button, if the Operator hasn’t specified <code class="docutils literal notranslate"><span class="pre">exit_url</span></code> parameter in <span class="xref std std-ref">gamerunner-label</span> arguments.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 - Enjoy Gaming.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
