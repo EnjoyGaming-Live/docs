@@ -17,10 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "Basic Sphinx Example Project"
-copyright = "2022, Read the Docs core team"
-author = "Read the Docs core team"
-
+project = "Enjoy Gaming -  Game Provider Integration Documentation"
+copyright = "2022 - Enjoy Gaming"
+author = "EG Team"
 
 # -- General configuration ---------------------------------------------------
 # -- General configuration
@@ -31,6 +30,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
+    "sphinx-favicon",
 ]
 
 intersphinx_mapping = {
@@ -61,3 +61,13 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+html_style = 'css/custom.css'
+
+favicons = [
+    {
+        "rel": "icon",
+        "static-file": "favicon-32x32.png",
+        "type": "image/png",
+    },
+]
